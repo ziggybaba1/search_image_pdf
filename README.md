@@ -1,7 +1,11 @@
 # search_image_pdf
 
-# Download dompdf_0-8-3 zip file and unzip to project directly.
+ Step 1: Download dompdf_0-8-3 zip file and unzip to project directly.
 
-# This project is designed to show how to use php to search for image file and download as pdf files.
+ Step 2: Create image folder with name image, add images to folder
+ 
+ Step 3: Use in your projects.
+
+This project is designed to show how to use php to search for image file and download as pdf files.
 
 # contributor @seyiadejugbagbe.
