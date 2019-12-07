@@ -6,10 +6,10 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!--IE Compatibility Meta-->
-<meta name="author" content="Paynergy" />
+<meta name="author" content="Adejugbagbe Seyi" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="1st Annual Conference/AGM 2019 Certificate portal">
-<meta name="csrf-token" content="{{ csrf_token() }}" />
+<meta name="description" content="Image Search portal">
+<meta name="csrf-token" content="" />
 <link href="assets/images/favicon/favicon.ico" rel="icon">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <!-- Fonts
@@ -116,8 +116,8 @@ body{
     </nav>
 <div class="wrap">
 <img class="logo-dark" width="170" align="middle" src="logo.png" alt="Logo">
-<h3><b style="color:green;">AEIAN</b> 2019 CONFERENCE CERTIFICATE</h3>
-<h5>Enter 3 letters of your name on the search bar below to download certificate</h5>
+<h3><b style="color:green;">Search</b> Image</h3>
+<h5>Enter 3 letters of your name on the search bar below to download files</h5>
    <div class="search">
        
       <input type="text" oninput="searchname()" id="name_search" class="searchTerm" placeholder="Search for your name?">
@@ -154,7 +154,7 @@ function searchname(){
 	dataType: 'JSON',
     success: function(data){
      for(var i = 0; i < data.length; i++){
-    $('#list_content').append('<li><a style="color:#00b4cc;" href="https://certificate.aeian.org/get_cert.php?file='+ data[i].replace('.jpg', '') +'">' + data[i].replace('.jpg', '') + '</a></li>');
+    $('#list_content').append('<li><a style="color:#00b4cc;" href="/get_cert.php?file='+ data[i].replace('.jpg', '') +'">' + data[i].replace('.jpg', '') + '</a></li>');
                 };
     }
 });    
