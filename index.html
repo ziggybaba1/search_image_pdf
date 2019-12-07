@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+<!-- Document Meta
+============================================= -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!--IE Compatibility Meta-->
+<meta name="author" content="Paynergy" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="1st Annual Conference/AGM 2019 Certificate portal">
+<meta name="csrf-token" content="{{ csrf_token() }}" />
+<link href="assets/images/favicon/favicon.ico" rel="icon">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<!-- Fonts
+============================================= -->
+<link href="https://fonts.googleapis.com/css?family=Poppins:300i,400,400i,500,600,700,800%7CLora:400,400i,700,700i" rel="stylesheet">
+<style>
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body{
+  background: #f2f2f2;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+.ant-menu {
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    color: rgba(0, 0, 0, 0.65);
+    background: #fff;
+    line-height: 1.5;
+    transition: background .3s, width .2s;
+    zoom: 1;
+}
+.ant-menun {
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+    line-height: 1.5;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 20;
+    outline: none;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    color: rgba(0, 0, 0, 0.65);
+    line-height: 1.5;
+    transition: background .3s, width .2s;
+    zoom: 1;
+}
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 50%;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@media (max-width: 800px){
+.wrap {
+   width: 80%;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+    }
+}
+</style>
+<body class="body-scroll">
+    <nav>
+        <ul class="ant-menun" style="list-style-type:none;"><li><a style="color:#00b4cc;" href="https://aeian.org/">Home</a></li></ul>
+    </nav>
+<div class="wrap">
+<img class="logo-dark" width="170" align="middle" src="logo.png" alt="Logo">
+<h3><b style="color:green;">AEIAN</b> 2019 CONFERENCE CERTIFICATE</h3>
+<h5>Enter 3 letters of your name on the search bar below to download certificate</h5>
+   <div class="search">
+       
+      <input type="text" oninput="searchname()" id="name_search" class="searchTerm" placeholder="Search for your name?">
+      <button type="submit" id="login" class="searchButton">
+        <i class="fa fa-search"></i>
+     </button>
+   </div>
+   <ul id="list_content" class="ant-menu" style="list-style-type:none;">
+      
+   </ul>
+</div>
+</body>
+<script src="https://paynergy.ng/public/asseto/js/jquery-2.2.4.min.js"></script>
+<script>
+$('#login').click(function(){
+var val=$('#name_search').val();
+alert(val);
+$.ajax({
+    type: "GET",
+    url: "search.php",
+	data:{name:val},
+    success: function(data){
+        alert(data);
+    }
+});
+});
+function searchname(){
+    $('#list_content').html('');
+    if($('#name_search').val().length>2){
+    $.ajax({
+    type: "GET",
+    url: 'search.php',
+	data:{name:  $('#name_search').val()},
+	dataType: 'JSON',
+    success: function(data){
+     for(var i = 0; i < data.length; i++){
+    $('#list_content').append('<li><a style="color:#00b4cc;" href="https://certificate.aeian.org/get_cert.php?file='+ data[i].replace('.jpg', '') +'">' + data[i].replace('.jpg', '') + '</a></li>');
+                };
+    }
+});    
+    }
+}
+</script>
+</html>
